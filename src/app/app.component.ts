@@ -39,12 +39,11 @@ export class AppComponent implements OnInit{
     this.skills.push(this.newSkill());
   }
 
-  addProduct() {
-    // let products = this.customerInfo.get('products') as FormArray;
-    // products.push(this.formBuilder.group({
-    //   name : [],
-    //   description : [],
-    //   products: this.formBuilder.
-    // }));
+  removeSkill(i:number) {
+    this.skills.removeAt(i);
+  }
+
+  onSubmit() {
+    console.log(this.skillsForm.value);
   }
 }
