@@ -33,6 +33,12 @@ export class AppComponent implements OnInit{
     })
   }
 
+  // Adiciona ao array de skills uma nova skill, que por sua vez é um formGroup, que só pode ser acessado
+  // através de seu índice
+  addSkills() {
+    this.skills.push(this.newSkill());
+  }
+
   addProduct() {
     // let products = this.customerInfo.get('products') as FormArray;
     // products.push(this.formBuilder.group({
