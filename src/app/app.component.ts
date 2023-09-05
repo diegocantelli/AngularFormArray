@@ -9,25 +9,23 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 export class AppComponent implements OnInit{
 
   title = 'form-array-tutorial';
-  customerInfo!: FormGroup;
+  skillsForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private fb: FormBuilder){}
 
   ngOnInit(): void {
-    this.customerInfo = this.formBuilder.group({
-      firstName: [],
-      lastName: [],
-      username: [],
-      email: [],
-      products: this.formBuilder.array([])
+    this.skillsForm = this.fb.group({
+      name: this.fb.control([]),
+      skills: this.fb.array([])
     })
   }
 
   addProduct() {
-    let products = this.customerInfo.get('products') as FormArray;
-    products.push(this.formBuilder.group({
-      name : [],
-      description : []
-    }));
+    // let products = this.customerInfo.get('products') as FormArray;
+    // products.push(this.formBuilder.group({
+    //   name : [],
+    //   description : [],
+    //   products: this.formBuilder.
+    // }));
   }
 }
