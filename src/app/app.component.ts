@@ -20,6 +20,11 @@ export class AppComponent implements OnInit{
     })
   }
 
+  get skills() : FormArray {
+    // retorna o formArray skills dentro do formularaio skillsForm
+    return this.skillsForm.get('skills') as FormArray;
+  }
+
   addProduct() {
     // let products = this.customerInfo.get('products') as FormArray;
     // products.push(this.formBuilder.group({
