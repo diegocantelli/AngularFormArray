@@ -25,6 +25,14 @@ export class AppComponent implements OnInit{
     return this.skillsForm.get('skills') as FormArray;
   }
 
+  // este será o formgroup que sera criado e adicionado ao formArray toda vez que uma nova skill for criada
+  newSkill() : FormGroup{
+    return this.fb.group({
+      skill: '',
+      exp: ''
+    })
+  }
+
   addProduct() {
     // let products = this.customerInfo.get('products') as FormArray;
     // products.push(this.formBuilder.group({
