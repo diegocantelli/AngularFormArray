@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.skillsForm = this.fb.group({
-      name: this.fb.control([]),
+      name: '',
       skills: this.fb.array([])
     })
   }
@@ -28,8 +28,8 @@ export class AppComponent implements OnInit{
   // este será o formgroup que sera criado e adicionado ao formArray toda vez que uma nova skill for criada
   newSkill() : FormGroup{
     return this.fb.group({
-      skill: '',
-      exp: ''
+      skill: this.fb.control([]),
+      exp: this.fb.control([])
     })
   }
 
