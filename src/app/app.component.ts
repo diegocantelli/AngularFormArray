@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { SeniorityLevelService } from './seniority-level.service';
+import { SeniorityLevel } from './models/seniority-level';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ export class AppComponent implements OnInit{
   title = 'form-array-tutorial';
   skillsForm!: FormGroup;
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private seniorityLevelService: SeniorityLevelService){}
 
   ngOnInit(): void {
     this.skillsForm = this.fb.group({
@@ -23,6 +25,10 @@ export class AppComponent implements OnInit{
   get skills() : FormArray {
     // retorna o formArray skills dentro do formularaio skillsForm
     return this.skillsForm.get('skills') as FormArray;
+  }
+
+  get levels(): SeniorityLevel[]{
+    return this.seniorityLevelService.levels;
   }
 
   // este será o formgroup que sera criado e adicionado ao formArray toda vez que uma nova skill for criada
