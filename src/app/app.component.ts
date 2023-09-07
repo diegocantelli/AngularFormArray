@@ -29,7 +29,8 @@ export class AppComponent implements OnInit{
   newSkill() : FormGroup{
     return this.fb.group({
       skill: this.fb.control([]),
-      exp: this.fb.control([])
+      exp: this.fb.control([]),
+      seniorLevel: this.fb.control([])
     })
   }
 

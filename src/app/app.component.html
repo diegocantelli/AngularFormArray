@@ -9,15 +9,23 @@
       <div *ngFor="let skill of skills.controls; let i=index">
         <div [formGroupName]="i">
           <div class="row g-3">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <label for="skillname" class="form-label">Skill name:</label>
               <input type="text" class="form-control mb-3" formControlName="skill">
             </div>
             <div class="col-md-3">
-              <label class="form-label" for="experience">Exp:</label>
+              <label class="form-label" for="experience">Time of exp:</label>
               <input class="form-control" id="experience" type="text" formControlName="exp">
             </div>
-            <div class="col-md-3 d-flex align-items-end">
+            <div class="col-md-3">
+              <label class="form-label" for="seniorlevel">Seniority level</label>
+              <select class="form-select" id="seniorlevel" formControlName="seniorLevel">
+                <option>Junior</option>
+                <option selected>Mid level</option>
+                <option>Senior</option>
+              </select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
               <button type="button" class="btn btn-danger mb-3" (click)="removeSkill(i)">Remove</button>
             </div>
           </div>
