@@ -13,13 +13,15 @@ export class AppComponent implements OnInit{
   title = 'form-array-tutorial';
   skillsForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private seniorityLevelService: SeniorityLevelService){}
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private seniorityLevelService: SeniorityLevelService){
     this.skillsForm = this.fb.group({
       name: '',
       skills: this.fb.array([])
     })
+  }
+
+  ngOnInit(): void {
+    this.skills.push(this.newSkill());
   }
 
   get skills() : FormArray {
