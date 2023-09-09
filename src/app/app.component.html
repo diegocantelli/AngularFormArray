@@ -11,14 +11,21 @@
           <div class="row g-3">
             <div class="col-md-4">
               <label for="skillname" class="form-label">Skill name:</label>
-              <input type="text" class="form-control mb-3" [ngClass]="['form-control', 'mb-3', formFieldContainsSpecificError(skill, 'skill', 'required') ? 'is-invalid' : 'is-valid']" formControlName="skill">
-              <ng-container *ngIf="skill.get('skill')?.invalid && (skill.get('skill')?.dirty || skill.get('skill')?.touched)">
-                <small class="text-danger" *ngIf="formFieldContainsSpecificError(skill, 'skill', 'required')">É obrigatório informar uma skill</small>
-              </ng-container>
+              <input type="text" class="form-control" [ngClass]="['form-control']" formControlName="skill">
+              <app-validation-message class="mb-3" *ngIf="formFieldContainsSpecificError(skill, 'skill', 'required')"
+                [message]="'É obrigatório informar uma skill'"
+                [cssClass]="'text-danger'">
+              </app-validation-message>
             </div>
+
             <div class="col-md-3">
               <label class="form-label" for="experience">Time of exp:</label>
-              <input class="form-control" id="experience" type="text" formControlName="exp">
+              <input class="form-control" id="experience" [ngClass]="['form-control']" type="text"
+                formControlName="exp">
+              <app-validation-message *ngIf="formFieldContainsSpecificError(skill, 'exp', 'required')"
+                [message]="'É obrigatório informar o tempo de experiência'"
+                [cssClass]="'text-danger mb-3'">
+              </app-validation-message>
             </div>
             <div class="col-md-3">
               <label class="form-label" for="seniorlevel">Seniority level</label>
@@ -26,9 +33,13 @@
                 <option value="" disabled selected></option>
                 <option *ngFor="let level of levels" [value]="level.level">{{level.level}}</option>
               </select>
+              <app-validation-message *ngIf="formFieldContainsSpecificError(skill, 'seniorLevel', 'required')"
+                [message]="'É obrigatório informar o nível de senioridade'"
+                [cssClass]="'text-danger mb-3'">
+              </app-validation-message>
             </div>
-            <div class="col-md-2 d-flex align-items-end">
-              <button type="button" class="btn btn-danger mb-3" (click)="removeSkill(i)">Remove</button>
+            <div class="col-md-2 mt-5">
+              <button type="button" class="btn btn-danger" (click)="removeSkill(i)">Remove</button>
             </div>
           </div>
         </div>

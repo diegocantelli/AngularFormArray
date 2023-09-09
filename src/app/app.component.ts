@@ -52,8 +52,10 @@ export class AppComponent implements OnInit{
     this.skills.removeAt(i);
   }
 
-  formFieldContainsSpecificError(control: AbstractControl, formControlName: string, errorName: string) : boolean{
-    if (control.get(formControlName)?.errors?.[errorName]) return true;
+  formFieldContainsSpecificError(control: AbstractControl, formControlName: string, errorName: string) : boolean {
+    if (control.get(formControlName)?.invalid &&
+       (control.get(formControlName)?.dirty || control.get(formControlName)?.touched) &&
+       (control.get(formControlName)?.errors?.[errorName])) return true;
     return false;
   }
 
