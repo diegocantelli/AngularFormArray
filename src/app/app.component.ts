@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SeniorityLevelService } from './seniority-level.service';
 import { SeniorityLevel } from './models/seniority-level';
 
@@ -36,9 +36,9 @@ export class AppComponent implements OnInit{
   // este será o formgroup que sera criado e adicionado ao formArray toda vez que uma nova skill for criada
   newSkill() : FormGroup{
     return this.fb.group({
-      skill: this.fb.control([]),
-      exp: this.fb.control([]),
-      seniorLevel: this.fb.control([])
+      skill: this.fb.control('',[Validators.required]),
+      exp: this.fb.control('',[Validators.required]),
+      seniorLevel: this.fb.control('',[Validators.required])
     })
   }
 
@@ -53,6 +53,7 @@ export class AppComponent implements OnInit{
   }
 
   onSubmit() {
+    console.log(this.skillsForm.valid);
     console.log(this.skillsForm.value);
   }
 }

@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-3">
               <label class="form-label" for="seniorlevel">Seniority level</label>
-              <select class="form-select" id="seniorlevel" formControlName="seniorLevel">
+              <select class="form-select" id="seniorlevel{{i}}" formControlName="seniorLevel">
                 <option value="" disabled selected></option>
                 <option *ngFor="let level of levels" [value]="level.level">{{level.level}}</option>
               </select>
