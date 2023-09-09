@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SeniorityLevelService } from './seniority-level.service';
 import { SeniorityLevel } from './models/seniority-level';
 
@@ -50,6 +50,11 @@ export class AppComponent implements OnInit{
 
   removeSkill(i:number) {
     this.skills.removeAt(i);
+  }
+
+  formFieldContainsSpecificError(control: AbstractControl, formControlName: string, errorName: string) : boolean{
+    if (control.get(formControlName)?.errors?.[errorName]) return true;
+    return false;
   }
 
   onSubmit() {

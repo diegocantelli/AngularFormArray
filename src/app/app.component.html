@@ -11,7 +11,10 @@
           <div class="row g-3">
             <div class="col-md-4">
               <label for="skillname" class="form-label">Skill name:</label>
-              <input type="text" class="form-control mb-3" formControlName="skill">
+              <input type="text" class="form-control mb-3" [ngClass]="['form-control', 'mb-3', formFieldContainsSpecificError(skill, 'skill', 'required') ? 'is-invalid' : 'is-valid']" formControlName="skill">
+              <ng-container *ngIf="skill.get('skill')?.invalid && (skill.get('skill')?.dirty || skill.get('skill')?.touched)">
+                <small class="text-danger" *ngIf="formFieldContainsSpecificError(skill, 'skill', 'required')">É obrigatório informar uma skill</small>
+              </ng-container>
             </div>
             <div class="col-md-3">
               <label class="form-label" for="experience">Time of exp:</label>
