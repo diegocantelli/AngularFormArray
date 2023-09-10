@@ -47,7 +47,7 @@
     </div>
     <div class="space-buttons">
       <button class="mt-3 btn btn-primary" type="button" (click)="addSkills()">Add</button>
-      <button class="mt-3 btn btn-secondary" type="submit">Submit</button>
+      <button [disabled]="allSkillsInvalid()" class="mt-3 btn btn-secondary" type="submit">Submit</button>
     </div>
   </form>
 </main>

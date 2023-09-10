@@ -59,6 +59,10 @@ export class AppComponent implements OnInit{
     return false;
   }
 
+  allSkillsInvalid() : boolean {
+    return this.skills.controls.every(control => control.invalid);
+  }
+
   onSubmit() {
     console.log(this.skillsForm.valid);
     console.log(this.skillsForm.value);
