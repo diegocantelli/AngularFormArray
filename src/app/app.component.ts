@@ -24,30 +24,7 @@ export class AppComponent implements OnInit{
     this.populateForm();
   }
 
-  private populateForm() {
-    const localStorageFormItem = localStorage.getItem('formValue');
 
-    if (localStorageFormItem) {
-      const parsedForm = JSON.parse(localStorageFormItem);
-
-      // remove os formArrays pre existentes
-      while (this.skills.length !== 0) {
-        this.skills.removeAt(0);
-      }
-
-      // para cada skill presente no json, será criado um formArray correspondente
-      parsedForm.skills.forEach((skill: any) => {
-        const skillGroup = this.newSkill();
-        this.skills.push(skillGroup);
-      });
-
-      // com base nos formArrays do formulário criado e dos arrays do objeto json, é possível preencher os valores
-      // do formulário através do PatchValue
-      this.skillsForm.patchValue(parsedForm);
-    } else {
-      this.skills.push(this.newSkill());
-    }
-  }
 
   get skills() : FormArray {
     // retorna o formArray skills dentro do formularaio skillsForm
@@ -91,5 +68,30 @@ export class AppComponent implements OnInit{
   onSubmit() {
     console.log(JSON.stringify(this.skillsForm.value));
     localStorage.setItem('formValue', JSON.stringify(this.skillsForm.value));
+  }
+
+  private populateForm() {
+    const localStorageFormItem = localStorage.getItem('formValue');
+
+    if (!localStorageFormItem) {
+      this.skills.push(this.newSkill());
+      return;
+    }
+
+    const parsedForm = JSON.parse(localStorageFormItem);
+
+    // remove os formArrays pre existentes
+    while (this.skills.length !== 0) {
+      this.skills.removeAt(0);
+    }
+
+    // para cada skill presente no json, será criado um formArray correspondente
+    parsedForm.skills.forEach(() => {
+      this.skills.push(this.newSkill());
+    });
+
+    // com base nos formArrays do formulário criado e dos arrays do objeto json, é possível preencher os valores
+    // do formulário através do PatchValue
+    this.skillsForm.patchValue(parsedForm);
   }
 }
